@@ -49,7 +49,7 @@ var PlayerScore = React.createClass({
     }
 })
 
-var Container = React.createClass({
+var Scoreboard = React.createClass({
     propTypes: {
         players: React.PropTypes.arrayOf(React.PropTypes.shape({
             name: React.PropTypes.string,
@@ -59,22 +59,16 @@ var Container = React.createClass({
 
     render: function() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="panel panel-primary">
-                            <div className="panel-heading">Scoreboard</div>
-                            <ul className="list-group">
-                                {this.props.players.map(function(player) {
-                                    return <PlayerScore name={player.name} score={player.score} key={player.id} />
-                                })}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div className="panel panel-primary">
+                <div className="panel-heading">Scoreboard</div>
+                <ul className="list-group">
+                    {this.props.players.map(function(player) {
+                        return <PlayerScore name={player.name} score={player.score} key={player.id} />
+                    })}
+                </ul>
             </div>
         );
     }
 });
 
-ReactDOM.render(<Container players={playerData} />, document.getElementById('app-container'));
+ReactDOM.render(<Scoreboard players={playerData} />, document.getElementById('app-container'));
